@@ -34,10 +34,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            homeFragment = HomeFragment()
-            findFragment = FindFragment()
-            mineFragment = MineFragment()
-            hotFragment = HotFragment()
+            homeFragment = HomeFragment.newInstance()
+            findFragment = FindFragment.newInstance()
+            mineFragment = MineFragment.newInstance()
+            hotFragment = HotFragment.newInstance()
             supportFragmentManager.beginTransaction().run {
                 add(R.id.home_container, homeFragment!!)
                 add(R.id.home_container, findFragment!!)
