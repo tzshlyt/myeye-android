@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.myeye.R
-import com.example.myeye.ui.home.CommendFragment
+import com.example.myeye.ui.home.RecommendFragment
 import com.example.myeye.ui.home.DailyFragment
 import com.example.myeye.ui.home.DiscoveryFragment
 import com.example.myeye.viewModel.HomeViewModel
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -55,7 +54,7 @@ class HomeFragment : Fragment() {
         override fun createFragment(position: Int): Fragment {
            return when(position) {
                 0 -> DiscoveryFragment.newInstance()
-                1 -> CommendFragment.newInstance()
+                1 -> RecommendFragment.newInstance()
                 else -> DailyFragment.newInstance()
             }
         }

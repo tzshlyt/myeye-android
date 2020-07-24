@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="53dp"
+    android:paddingHorizontal="14dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_title_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        tools:text="热门分类"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_right_text_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="查看更多"
+        android:textSize="14sp"
+        android:textColor="@color/blue"
+        app:layout_constraintTop_toTopOf="@id/iv_icon7"
+        app:layout_constraintBottom_toBottomOf="@id/iv_icon7"
+        app:layout_constraintEnd_toStartOf="@id/iv_icon7"
+        />
+
+    <ImageView
+        android:id="@+id/iv_icon7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_into_blue_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

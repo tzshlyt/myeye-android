@@ -14,14 +14,14 @@ class MainViewModel: ViewModel() {
 	var homeData: MutableLiveData<HomeBean> = MutableLiveData()
 
 	fun requestData() {
-		val disposable = Repository()
-			.getHome()
-			.subscribeOn(Schedulers.io())
-			.observeOn(AndroidSchedulers.mainThread())
-			.subscribe ({ it ->
-				homeData.postValue(it)
-			}, {err ->
-
-			})
+//		val disposable = Repository()
+//			.getHome()
+//			.subscribeOn(Schedulers.io())
+//			.observeOn(AndroidSchedulers.mainThread())
+//			.subscribe ({ it ->
+//				homeData.postValue(it)
+//			}, {err ->
+//
+//			})
 	}
 }

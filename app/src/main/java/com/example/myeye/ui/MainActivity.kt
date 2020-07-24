@@ -2,9 +2,6 @@ package com.example.myeye.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.sax.RootElement
-import android.util.Log
-import android.widget.ViewSwitcher
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.myeye.R
@@ -17,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
 
     private var homeFragment: HomeFragment? = null
-    private var findFragment: FindFragment? = null
-    private var hotFragment: HotFragment? = null
+    private var communityFragment: CommunityFragment? = null
+    private var notificationFragment: NotificationFragment? = null
     private var mineFragment: MineFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,18 +32,18 @@ class MainActivity : AppCompatActivity() {
     private fun initFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             homeFragment = HomeFragment.newInstance()
-            findFragment = FindFragment.newInstance()
+            communityFragment = CommunityFragment.newInstance()
             mineFragment = MineFragment.newInstance()
-            hotFragment = HotFragment.newInstance()
+            notificationFragment = NotificationFragment.newInstance()
             supportFragmentManager.beginTransaction().run {
                 add(R.id.home_container, homeFragment!!)
-                add(R.id.home_container, findFragment!!)
-                add(R.id.home_container, hotFragment!!)
+                add(R.id.home_container, communityFragment!!)
+                add(R.id.home_container, notificationFragment!!)
                 add(R.id.home_container, mineFragment!!)
 
                 show(homeFragment!!)
-                hide(findFragment!!)
-                hide(hotFragment!!)
+                hide(communityFragment!!)
+                hide(notificationFragment!!)
                 hide(mineFragment!!)
                 commit()
             }
@@ -55,11 +52,11 @@ class MainActivity : AppCompatActivity() {
                 if (item is HomeFragment) {
                     homeFragment = item
                 }
-                if (item is FindFragment) {
-                    findFragment = item
+                if (item is CommunityFragment) {
+                    communityFragment = item
                 }
-                if (item is HotFragment) {
-                    hotFragment = item
+                if (item is NotificationFragment) {
+                    notificationFragment = item
                 }
                 if (item is MineFragment) {
                     mineFragment = item
@@ -72,8 +69,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.rb_home -> {
                     supportFragmentManager.beginTransaction().run {
                         show(homeFragment!!)
-                        hide(findFragment!!)
-                        hide(hotFragment!!)
+                        hide(communityFragment!!)
+                        hide(notificationFragment!!)
                         hide(mineFragment!!)
                         commit()
                     }
@@ -82,8 +79,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.rb_find -> {
                     supportFragmentManager.beginTransaction().run {
                         hide(homeFragment!!)
-                        show(findFragment!!)
-                        hide(hotFragment!!)
+                        show(communityFragment!!)
+                        hide(notificationFragment!!)
                         hide(mineFragment!!)
                         commit()
                     }
@@ -92,8 +89,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.rb_hot -> {
                     supportFragmentManager.beginTransaction().run {
                         hide(homeFragment!!)
-                        hide(findFragment!!)
-                        show(hotFragment!!)
+                        hide(communityFragment!!)
+                        show(notificationFragment!!)
                         hide(mineFragment!!)
                         commit()
                     }
@@ -102,8 +99,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.rb_mine -> {
                     supportFragmentManager.beginTransaction().run {
                         hide(homeFragment!!)
-                        hide(findFragment!!)
-                        hide(hotFragment!!)
+                        hide(communityFragment!!)
+                        hide(notificationFragment!!)
                         show(mineFragment!!)
                         commit()
                     }

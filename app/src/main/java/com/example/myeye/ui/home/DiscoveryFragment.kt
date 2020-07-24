@@ -1,13 +1,15 @@
 package com.example.myeye.ui.home
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myeye.R
+import com.example.myeye.adapter.DiscoveryAdapter
+import kotlinx.android.synthetic.main.fragment_discovery.*
 
 class DiscoveryFragment : Fragment() {
 
@@ -16,6 +18,7 @@ class DiscoveryFragment : Fragment() {
     }
 
     private lateinit var viewModel: DiscoveryViewModel
+    private lateinit var adapter: DiscoveryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +30,17 @@ class DiscoveryFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DiscoveryViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
+        adapter = DiscoveryAdapter(viewModel.dataList)
+        rv_main.adapter = adapter
+
+        viewModel.requestData()
+        viewModel.dataListLiveData.observe(viewLifecycleOwner, Observer { result ->
+            result.onSuccess {
+                viewModel.dataList.clear()
+                viewModel.dataList.addAll(it.itemList)
+                adapter.notifyDataSetChanged()
+            }
+        })
+    }
 }

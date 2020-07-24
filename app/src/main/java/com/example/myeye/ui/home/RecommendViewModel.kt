@@ -5,9 +5,10 @@ import com.example.myeye.network.Repository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class DailyViewModel : ViewModel() {
+class RecommendViewModel : ViewModel() {
+
     fun requestData() {
-        Repository.getDaily()
+        Repository.getRecommend()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
